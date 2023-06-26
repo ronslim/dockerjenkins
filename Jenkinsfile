@@ -1,11 +1,12 @@
 pipeline {
     agent {
-        docker { image 'node:18.16.0-alpine' }
+        docker { image 'httpd:2.4.57-alpine' }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                echo 'Docker Run Test'
+                sh 'docker run -d -p 8085:80 httpd:2.4.57-alpine'
             }
         }
     }
